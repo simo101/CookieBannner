@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="CookieCuttr.widget.CookieCuttr" needsEntityContext="false" xmlns="http://www.mendix.com/widget/1.0/">
+  <name>Cookie Cuttr</name>
+  <description>CookieCuttr</description>
+
+  <icon>
+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
+  </icon>
+
+  <properties>
+
+        <property key="cookieMessage" type="string" multiline="true" defaultValue="" >
+            <caption>Message</caption>
+            <category>Data source</category>
+            <description>edit the message you want to appear in the cookie bar, remember to keep the {{cookiePolicyLink}} variable in tact so it inserts your privacy policy link.</description>
+        </property>
+        <property key="cookiePolicy" type="string" required="false">
+            <caption>Policy link</caption>
+            <category>Cookie policy</category>
+            <description>if applicable, enter the link to your privacy policy in here - this is as soon as cookieAnalytics is set to false</description>
+        </property>
+        <property key="declineCookies" type="boolean" defaultValue="false">
+            <caption>Decline button</caption>
+            <category>Buttons</category>
+            <description>if you’d like a decline button to (ironically) write a cookie into the browser then set this to true.</description>
+        </property>
+        <property key="cookieDeclineButtonText" type="string" defaultValue="Decline">
+            <caption>Decline button text</caption>
+            <category>Buttons</category>
+            <description>you can change the text of the red decline button.</description>
+        </property>
+        
+        <property key="cookieAcceptButton" type="boolean" required="true" defaultValue="true">
+            <caption>Accept Button</caption>
+            <category>Buttons</category>
+            <description>set this to true to hide the accept button, its set to false by default</description>
+        </property>
+        <property key="cookieAcceptButtonText" type="string" required="false" defaultValue="Accept">
+            <caption>Accept Button Text</caption>
+            <category>Buttons</category>
+            <description>you can change the text of the green accept button.</description>
+        </property>
+
+         <property key="cookieOverlayEnabled" type="boolean" required="true" defaultValue="false">
+            <caption>Enable overlay</caption>
+            <category>Behaviour</category>
+            <description>don't want a discreet toolbar? this makes the whole message into a 100% height</description>
+        </property>
+         <property key="cookieNotificationLocationBottom" type="boolean" required="true" defaultValue="false">
+            <caption>Location bottom</caption>
+            <category>Behaviour</category>
+            <description>this is false by default, change it to true and the cookie notification bar will show at the bottom of the page instead, please note this will remain at the top for mobile and iOS devices and Internet Explorer 6.</description>
+        </property>
+        <property key="cookiePolicyPage" type="boolean" required="true" defaultValue="false">
+            <caption>Enable cookie policy page</caption>
+            <category>Cookie policy</category>
+            <description>set this to true to display the message you want to appear on your privacy or cookie policy page.</description>
+        </property>
+        
+        <property key="cookiePolicyPageMessage" type="string" required="false" multiline="true">
+            <caption>Cookie policy message</caption>
+            <category>Cookie policy</category>
+            <description>edit the message you want to appear on your policy page</description>
+        </property>
+                <property key="cookieDiscreetLink" type="boolean" required="true" defaultValue="false">
+            <caption>Enable discreet box</caption>
+            <category>Cookie discreet</category>
+            <description>false by default, set to true to enable.</description>
+        </property>
+        <property key="cookieDiscreetLinkText" type="string" required="false" multiline="true">
+            <caption>Discreet text</caption>
+            <category>Cookie discreet</category>
+            <description>edit the text you want to appear on the discreet option.</description>
+        </property>
+        <property key="cookieDiscreetPosition" type="enumeration" required="true" defaultValue="topright">
+            <caption>Position</caption>
+            <category>Cookie discreet</category>
+            <description>set to topleft by default, you can also set topright, bottomleft, bottomright.</description>
+            <enumerationValues>
+                        <enumerationValue key='topleft'>Top Left</enumerationValue>
+                        <enumerationValue key='topright'>Top Right</enumerationValue>
+                        <enumerationValue key='bottomright'>Bottom Right</enumerationValue>
+                        <enumerationValue key='bottomleft'>Bottom Left</enumerationValue>
+                </enumerationValues>
+        </property>
+
+
+        
+
+        
+
+        
+    </properties>
+</widget>
