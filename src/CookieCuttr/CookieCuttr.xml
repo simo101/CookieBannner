@@ -84,7 +84,11 @@ iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMA
                 </enumerationValues>
         </property>
 
-
+        <property key="cookiePlacement" type="string" required="false">
+            <caption>Place above ID</caption>
+            <category>Behaviour</category>
+            <description>Leave blank to append to body. Otherwise add the ID name of the element you want the cookie to be appended to.</description>
+        </property>
         
 
         

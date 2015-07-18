@@ -1,9 +1,31 @@
-dojo.provide("CookieCuttr.widget.CookieCuttr");
+/*jslint white:true, nomen: true, plusplus: true */
+/*global mx, define, require, browser, devel, console, document, jQuery */
+/*mendix */
+/*
+    CookieCuttr
+    ========================
+    @file      : CookieCuttr.js
+    @version   : 3.0
+    @author    : Simon Black
+    @date      : 18/07/2015
+    Documentation
+    ========================
+    This widget is based on the popular jquery plugin Cookie Cuttr (http://cookiecuttr.com). This widget will allow you to put a cookie banner into your Mendix application. It can be used either on a mobile page or desktop. Once the cookies have been accepted then the user will not see the banner again and will be able to proceed as usual. This would most likely be used to comply with the EU cookie law legislations, which came into force in May 2011. 
+*/
 
-mendix.dom.insertCss(mx.moduleUrl('CookieCuttr') + 'widget/css/cookiecuttr.css');
-mendix.widget.declare('CookieCuttr.widget.CookieCuttr', {
+// Required module list. Remove unnecessary modules, you can always get them back from the boilerplate.
+define([
+    'dojo/_base/declare', 'mxui/widget/_WidgetBase', 'dijit/_TemplatedMixin',
+    'mxui/dom', 'dojo/dom', 'dojo/query', 'dojo/dom-prop', 'dojo/dom-geometry', 'dojo/dom-class', 'dojo/dom-style', 'dojo/dom-construct', 'dojo/_base/array', 'dojo/_base/lang', 'dojo/text', 'dojo/html', 'dojo/_base/event', 'CookieCuttr/lib/jquery-1.11.2', 'dojo/text!CookieCuttr/widget/template/CookieCuttr.html', 'CookieCuttr/widget/js/cookiejs', 'CookieCuttr/widget/js/cookiecuttrjs'
+], function (declare, _WidgetBase, _TemplatedMixin, dom, dojoDom, domQuery, domProp, domGeom, domClass, domStyle, domConstruct, dojoArray, lang, text, html, event, _jQuery, widgetTemplate, _cookie, _cookiecuttrjs) {
+    'use strict';
+
+    var $ = _jQuery.noConflict(true);
+    
+    // Declare widget's prototype.
+    return declare('CookieCuttr.widget.CookieCuttr', [_WidgetBase, _TemplatedMixin], {
     //DECLARATION
-    inputargs: { 
+        templateString: widgetTemplate,
         cookieMessage : '',
         cookiePolicy : '',
         declineCookies : false,
@@ -17,69 +39,85 @@ mendix.widget.declare('CookieCuttr.widget.CookieCuttr', {
         cookiePolicyPageMessage: '',
         cookieDiscreetLink: false,
         cookieDiscreetLinkText: '',
-        cookieDiscreetPosition: ''
-    },  
+        cookieDiscreetPosition: '',
+        cookiePlacement: 'body',
 
     postCreate : function() {        
+        this._setupEvents();
+        console.log(this.id + '.postCreate');
+    },
+        
+    _setupEvents: function(){
+        
+        if(this.cookiePlacement != 'body'){
+            if(typeof dojoDom.byId(this.cookiePlacement)!=  "undefined"){
 
-       this.cookiecut = this;
-        require({packages: [ { name: 'jquery', location:'/widgets/CookieCuttr/widget/js',  main: 'jquery' }]}, ["dojo","/widgets/CookieCuttr/widget/js/cookiejs.js"], function (dojo, cookie) { 
+                this.cookiePlacement = dojoDom.byId(this.cookiePlacement);
+            }               
+       }
 
-        dojo.require("CookieCuttr.widget.js.cookiecuttrjs");
-        var arguments = CookieCuttr.widget.CookieCuttr.arguments[0];
-        if(arguments.cookieNotificationLocationBottom){
+        this.cookiecut = this;
+        if(this.cookieNotificationLocationBottom){
             $.cookieCuttr({
                 cookieAnalytics: false,
-                cookieMessage: arguments.cookieMessage,
-                cookiePolicyLink: arguments.cookiePolicy,
-                cookieDeclineButton: arguments.declineCookies,
-                cookieDeclineButtonText : arguments.cookieDeclineButtonText,
-                cookieAcceptButton : arguments.cookieAcceptButton,
-                cookieAcceptButtonText: arguments.cookieAcceptButtonText,
-                cookieNotificationLocationBottom: arguments.cookieNotificationLocationBottom,
-                cookiePolicyPage : arguments.cookiePolicyPage,
-                cookiePolicyPageMessage: arguments.cookiePolicyPageMessage
+                cookieMessage: this.cookieMessage,
+                cookiePolicyLink: this.cookiePolicy,
+                cookieDeclineButton: this.declineCookies,
+                cookieDeclineButtonText : this.cookieDeclineButtonText,
+                cookieAcceptButton : this.cookieAcceptButton,
+                cookieAcceptButtonText: this.cookieAcceptButtonText,
+                cookieNotificationLocationBottom: this.cookieNotificationLocationBottom,
+                cookiePolicyPage : this.cookiePolicyPage,
+                cookiePolicyPageMessage: this.cookiePolicyPageMessage,
+                cookiePlacement: this.cookiePlacement
+                
         });
-        }else if(arguments.cookieDiscreetLink){
+        }else if(this.cookieDiscreetLink){
             $.cookieCuttr({
-                cookieDiscreetLink :arguments.cookieDiscreetLink,
-                cookieDiscreetLinkText: arguments.cookieDiscreetLinkText,
-                cookieDiscreetPosition : arguments.cookieDiscreetPosition
+                cookieDiscreetLink :this.cookieDiscreetLink,
+                cookieDiscreetLinkText: this.cookieDiscreetLinkText,
+                cookieDiscreetPosition : this.cookieDiscreetPosition,
+                cookiePlacement: this.cookiePlacement
             });
         }
-        else if(arguments.cookieOverlayEnabled){
+        else if(this.cookieOverlayEnabled){
             $.cookieCuttr({
                 cookieAnalytics: false,
-                cookieMessage: arguments.cookieMessage,
-                cookiePolicyLink: arguments.cookiePolicy,
-                cookieDeclineButton: arguments.declineCookies,
-                cookieDeclineButtonText : arguments.cookieDeclineButtonText,
-                cookieAcceptButton : arguments.cookieAcceptButton,
-                cookieAcceptButtonText: arguments.cookieAcceptButtonText,
-                cookiePolicyPage : arguments.cookiePolicyPage,
-                cookiePolicyPageMessage: arguments.cookiePolicyPageMessage,
-                cookieOverlayEnabled: arguments.cookieOverlayEnabled
+                cookieMessage: this.cookieMessage,
+                cookiePolicyLink: this.cookiePolicy,
+                cookieDeclineButton: this.declineCookies,
+                cookieDeclineButtonText : this.cookieDeclineButtonText,
+                cookieAcceptButton : this.cookieAcceptButton,
+                cookieAcceptButtonText: this.cookieAcceptButtonText,
+                cookiePolicyPage : this.cookiePolicyPage,
+                cookiePolicyPageMessage: this.cookiePolicyPageMessage,
+                cookieOverlayEnabled: this.cookieOverlayEnabled,
+                cookiePlacement: this.cookiePlacement
         });
         }else{
             $.cookieCuttr({
                 cookieAnalytics: false,
-                cookieMessage: arguments.cookieMessage,
-                cookiePolicyLink: arguments.cookiePolicy,
-                cookieDeclineButton: arguments.declineCookies,
-                cookieDeclineButtonText : arguments.cookieDeclineButtonText,
-                cookieAcceptButton : arguments.cookieAcceptButton,
-                cookieAcceptButtonText: arguments.cookieAcceptButtonText,
-                cookieWhatAreLinkText: arguments.cookieWhatAreLinkText,
-                cookiePolicyPage : arguments.cookiePolicyPage,
-                cookiePolicyPageMessage: arguments.cookiePolicyPageMessage
+                cookieMessage: this.cookieMessage,
+                cookiePolicyLink: this.cookiePolicy,
+                cookieDeclineButton: this.declineCookies,
+                cookieDeclineButtonText : this.cookieDeclineButtonText,
+                cookieAcceptButton : this.cookieAcceptButton,
+                cookieAcceptButtonText: this.cookieAcceptButtonText,
+                cookieWhatAreLinkText: this.cookieWhatAreLinkText,
+                cookiePolicyPage : this.cookiePolicyPage,
+                cookiePolicyPageMessage: this.cookiePolicyPageMessage,
+                cookiePlacement: this.cookiePlacement
         });
         }
-     });
         
-        this.actRendered();
-
     },
+
 
     uninitialize : function(){
     }
+});
+});
+
+require(['CookieCuttr/widget/CookieCuttr'], function () {
+    'use strict';
 });

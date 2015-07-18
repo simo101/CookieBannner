@@ -1,4 +1,3 @@
-dojo.provide("CookieCuttr.widget.js.cookiecuttrjs");
 /**
  * Copyright (C) 2012 Chris Wharton (chris@weare2ndfloor.com)
  *
