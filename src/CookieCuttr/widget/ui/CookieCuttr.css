@@ -21,3 +21,43 @@
 @media screen and (max-width: 480px) {
 .cc-cookies { position: relative; float: left; }
 }
+
+.cookie-banner-container{
+	width:950px;
+	margin: 0 auto;
+	font-size: 14px;
+}
+.cookie-info{
+	margin-right: 10px;
+	display: inline;
+}
+@media (min-width: 1200px) { 
+	.cookie-banner-container{
+	width:950px;
+	}
+}
+@media (min-width: 768px) and (max-width: 979px){
+	.cookie-banner-container{
+		width:650px;
+	}
+	.cookie-info {
+	display:none;
+	}
+}
+@media (max-width: 768px){
+	.cookie-banner-container{
+		width:400px;
+	}
+	.cookie-info {
+	display:none;
+	}
+}
+
+@media (max-width: 480px) {
+	.cookie-banner-container{
+		width:300px;
+	}
+	.cookie-info {
+	display:none;
+	}
+}
