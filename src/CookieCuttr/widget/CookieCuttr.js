@@ -14,9 +14,24 @@
 */
 
 // Required module list. Remove unnecessary modules, you can always get them back from the boilerplate.
-define([
+require({
+    packages: [{
+        name: 'jquery',
+        location: '../../widgets/CookieCuttr/lib',
+        main: 'jquery-1.11.2'
+ }, {
+        name: 'cookiejs',
+        location: '../../widgets/CookieCuttr/widget/js',
+        main: 'cookiejs'
+ }, {
+        name: 'cookiecuttrjs',
+        location: '../../widgets/CookieCuttr/widget/js',
+        main: 'cookiecuttrjs'
+ }]
+}, [
     'dojo/_base/declare', 'mxui/widget/_WidgetBase', 'dijit/_TemplatedMixin',
-    'mxui/dom', 'dojo/dom', 'dojo/query', 'dojo/dom-prop', 'dojo/dom-geometry', 'dojo/dom-class', 'dojo/dom-style', 'dojo/dom-construct', 'dojo/_base/array', 'dojo/_base/lang', 'dojo/text', 'dojo/html', 'dojo/_base/event', 'CookieCuttr/lib/jquery-1.11.2', 'dojo/text!CookieCuttr/widget/template/CookieCuttr.html', 'CookieCuttr/widget/js/cookiejs', 'CookieCuttr/widget/js/cookiecuttrjs'
+		'mxui/dom', 'dojo/dom', 'dojo/query', 'dojo/dom-prop', 'dojo/dom-geometry', 'dojo/dom-class', 'dojo/dom-style', 'dojo/dom-construct', 'dojo/_base/array', 'dojo/_base/lang', 'dojo/text', 'dojo/html', 'dojo/_base/event',
+		'jquery', 'dojo/text!CookieCuttr/widget/template/CookieCuttr.html', 'cookiejs', 'cookiecuttrjs'
 ], function (declare, _WidgetBase, _TemplatedMixin, dom, dojoDom, domQuery, domProp, domGeom, domClass, domStyle, domConstruct, dojoArray, lang, text, html, event, _jQuery, widgetTemplate, _cookie, _cookiecuttrjs) {
     'use strict';
 
