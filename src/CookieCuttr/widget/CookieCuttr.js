@@ -5,37 +5,25 @@
     CookieCuttr
     ========================
     @file      : CookieCuttr.js
-    @version   : 3.0
+    @version   : 4.0
     @author    : Simon Black
-    @date      : 18/07/2015
+    @date      : 15/05/2018
     Documentation
     ========================
     This widget is based on the popular jquery plugin Cookie Cuttr (http://cookiecuttr.com). This widget will allow you to put a cookie banner into your Mendix application. It can be used either on a mobile page or desktop. Once the cookies have been accepted then the user will not see the banner again and will be able to proceed as usual. This would most likely be used to comply with the EU cookie law legislations, which came into force in May 2011. 
 */
 
 // Required module list. Remove unnecessary modules, you can always get them back from the boilerplate.
-require({
-    packages: [{
-        name: 'jquery',
-        location: '../../widgets/CookieCuttr/lib',
-        main: 'jquery-1.11.2'
- }, {
-        name: 'cookiejs',
-        location: '../../widgets/CookieCuttr/widget/js',
-        main: 'cookiejs'
- }, {
-        name: 'cookiecuttrjs',
-        location: '../../widgets/CookieCuttr/widget/js',
-        main: 'cookiecuttrjs'
- }]
-}, [
+define([
     'dojo/_base/declare', 'mxui/widget/_WidgetBase', 'dijit/_TemplatedMixin',
 		'mxui/dom', 'dojo/dom', 'dojo/query', 'dojo/dom-prop', 'dojo/dom-geometry', 'dojo/dom-class', 'dojo/dom-style', 'dojo/dom-construct', 'dojo/_base/array', 'dojo/_base/lang', 'dojo/text', 'dojo/html', 'dojo/_base/event',
-		'jquery', 'dojo/text!CookieCuttr/widget/template/CookieCuttr.html', 'cookiejs', 'cookiecuttrjs'
+		'CookieCuttr/lib/jquery-1.11.2', 'dojo/text!CookieCuttr/widget/template/CookieCuttr.html', 'CookieCuttr/lib/cookiejs', 'CookieCuttr/lib/cookiecuttrjs'
 ], function (declare, _WidgetBase, _TemplatedMixin, dom, dojoDom, domQuery, domProp, domGeom, domClass, domStyle, domConstruct, dojoArray, lang, text, html, event, _jQuery, widgetTemplate, _cookie, _cookiecuttrjs) {
     'use strict';
 
     var $ = _jQuery.noConflict(true);
+    _cookiecuttrjs.createInstance($);
+    _cookie.createInstance($);
     
     // Declare widget's prototype.
     return declare('CookieCuttr.widget.CookieCuttr', [_WidgetBase, _TemplatedMixin], {
@@ -133,6 +121,4 @@ require({
 });
 });
 
-require(['CookieCuttr/widget/CookieCuttr'], function () {
-    'use strict';
-});
+require(['CookieCuttr/widget/CookieCuttr']);

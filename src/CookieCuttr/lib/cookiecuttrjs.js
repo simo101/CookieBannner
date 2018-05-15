@@ -1,3 +1,8 @@
+
+define([], function () {
+
+	return {
+		createInstance: function (jQuery) {
 /**
  * Copyright (C) 2012 Chris Wharton (chris@weare2ndfloor.com)
  *
@@ -288,3 +293,5 @@
         });
     };
 })(jQuery);
+
+        }}});

@@ -1,3 +1,7 @@
+define([], function () {
+
+	return {
+		createInstance: function (jQuery) {
 /*!
  * jQuery Cookie Plugin v1.4.0
  * https://github.com/carhartl/jquery-cookie
@@ -104,3 +108,5 @@
 	};
 
 }(jQuery));
+
+		}}});
